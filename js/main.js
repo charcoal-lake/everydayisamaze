@@ -84,7 +84,6 @@ function setup(){
   var today = new Date();
   month = String(today.getMonth()+1);
   date = String(today.getDate());
-  console.log(month + "/" + date);
   dataSize = data[month][date].length;
   
   mazeCplx = Math.round(Math.sqrt(data[month][date].length)*1.3);

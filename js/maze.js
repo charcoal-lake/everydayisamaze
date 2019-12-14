@@ -282,7 +282,6 @@ function createMaze(maze, mazeSize){
     }
 
     var k=0;
-    console.log(visited);
 
    // startpos = pathLine[parent][0][0];
    // endpos = pathLine[parent][0][length-1];
