@@ -58,9 +58,8 @@ body{
     font-size: 15px;
 
     width:300px;
-    background-color:red;
     right:350px;
-    top:50%;
+    top:30%;
     position: fixed;
 }
 

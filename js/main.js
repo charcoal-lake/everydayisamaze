@@ -80,8 +80,8 @@ let windowPosy;
 function setup(){
 
 
-  //createCanvas(windowWidth, windowHeight);
-  createCanvas(windowWidth, windowHeight*3);
+  createCanvas(windowWidth, windowHeight);
+  //createCanvas(windowWidth, windowHeight*3);
 
   var today = new Date();
   month = String(today.getMonth()+1);
