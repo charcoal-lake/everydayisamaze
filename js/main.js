@@ -124,10 +124,6 @@ function setup(){
 
   }
 
-  fp = createWriter('history/'+month+'-'+date+'.maz');
-  fp.write(patch);
-  fp.close();
-
   i=0;
   while(i<dataSize && i<pool.length){
     dataText = "";
