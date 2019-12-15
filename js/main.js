@@ -77,6 +77,9 @@ let about;
 let windowPosx;
 let windowPosy;
 
+// <----------save/load data --------->
+let fp;
+
 function setup(){
 
 
@@ -106,7 +109,7 @@ function setup(){
   image(todayMaze, windowPosx, windowPosy);
  
   patch = matchPath(pathLine, mazeCplx);
-  test = data[month][date];
+  dataArray = data[month][date];
 
   for (var i=0; i<patch.length; i++){
     begin = pathLine[patch[i].dir][patch[i].idx][0];
@@ -121,16 +124,20 @@ function setup(){
 
   }
 
+  fp = createWriter('history/'+month+'-'+date+'.maz');
+  fp.write(patch);
+  fp.close();
+
   i=0;
   while(i<dataSize && i<pool.length){
     dataText = "";
-    if (test[i]['year']>0){
-      dataText = test[i]['year']+"년, ";
+    if (dataArray[i]['year']>0){
+      dataText = dataArray[i]['year']+"년, ";
     }
-    dataText = dataText+test[i]['content'];
+    dataText = dataText+dataArray[i]['content'];
      
-    if (test[i]['category'] == '탄생' || test[i]['category'] == '사망'){
-      dataText = dataText+" "+test[i]['category'];
+    if (dataArray[i]['category'] == '탄생' || dataArray[i]['category'] == '사망'){
+      dataText = dataText+" "+dataArray[i]['category'];
     }
 
     sortedStr[i] = dataText;
@@ -167,10 +174,14 @@ function draw(){
   mouseOver(mouseX, mouseY);
   if(prevIndex != mapIndex){
   pool[prevIndex].delta =0;
+  pool[prevIndex].bg = {'r':255, 'g':255, 'b':255};
+  pool[prevIndex].textfill = color(0, 0, 0);
   }
   pool[mapIndex].delta -= deltaTime/20;
   if(pool[mapIndex].delta <= -(pool[mapIndex].str.length*textsize*0.7)){
     pool[mapIndex].delta = pool[mapIndex].str.length*textsize*0.7;
+    pool[mapIndex].bg = {'r':77, 'g':69, 'b':71};
+    pool[prevIndex].textfill = color(255);
   }
   createTextBox();
 
