@@ -172,12 +172,12 @@ function draw(){
   pool[prevIndex].delta =0;
   pool[prevIndex].bg = {'r':255, 'g':255, 'b':255};
   pool[prevIndex].textfill = color(0, 0, 0);
+  pool[mapIndex].bg = {'r':77, 'g':69, 'b':71};
+  pool[mapIndex].textfill = color(255);
   }
   pool[mapIndex].delta -= deltaTime/20;
   if(pool[mapIndex].delta <= -(pool[mapIndex].str.length*textsize*0.7)){
     pool[mapIndex].delta = pool[mapIndex].str.length*textsize*0.7;
-    pool[mapIndex].bg = {'r':77, 'g':69, 'b':71};
-    pool[prevIndex].textfill = color(255);
   }
   createTextBox();
 
