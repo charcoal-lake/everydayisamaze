@@ -71,26 +71,39 @@ let textsize = 20;
 let defaultWidth = 100; // test value
 let pool = [];
 
-// <--------- variable for TEST --------------->
-let mousecount =0;
+// <--------- UI ------------>
+let title;
+let about;
+let windowPosx;
+let windowPosy;
 
 function setup(){
 
-  createCanvas(windowWidth, windowHeight);
-  todayMaze = createGraphics(400, 400);
 
-  textFont('Black Han Sans');
-  textSize(15);
+  //createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight*3);
+
   var today = new Date();
   month = String(today.getMonth()+1);
   date = String(today.getDate());
+
+  title = document.getElementById('title');
+  about = document.getElementById('about');
+  title.innerHTML = 'maze of '+month+'/'+date;
+ 
+  todayMaze = createGraphics(400, 400);
+  
+  textFont('Black Han Sans');
+  textSize(15);
   dataSize = data[month][date].length;
   
   mazeCplx = Math.round(Math.sqrt(data[month][date].length)*1.3);
   maze = createMaze(todayMaze, mazeCplx);
   path = findPath(maze, mazeCplx);
   pathLine = getPathLine(maze, mazeCplx);
-  image(todayMaze, (windowWidth-todayMaze.width)/2, (windowHeight-todayMaze.height)/2);
+  windowPosx = (windowWidth/2)-todayMaze.width;
+  windowPosy = (windowHeight-todayMaze.height)/2;
+  image(todayMaze, windowPosx, windowPosy);
  
   patch = matchPath(pathLine, mazeCplx);
   test = data[month][date];
@@ -102,8 +115,8 @@ function setup(){
     x = begin%mazeCplx;
     y = parseInt(begin/mazeCplx);
     
-    posx = (windowWidth-todayMaze.width)/2 + x*cellsize + (cellsize-textsize)/2;
-    posy = (windowHeight-todayMaze.height)/2 + y*cellsize +(cellsize-textsize)/2;
+    posx = windowPosx+ x*cellsize + (cellsize-textsize)/2;
+    posy = windowPosy + y*cellsize +(cellsize-textsize)/2;
     pool[i] = new TextBox("", posx, posy, patch[i].dir, patch[i].reverse, pathLine[patch[i].dir][patch[i].idx].length);
 
   }
@@ -125,6 +138,7 @@ function setup(){
     i++;
   }
 
+
   // total Length == length of the total path
   // cur Length == current length of the path
   mapRate = totalLength / (60*60*24);
@@ -133,9 +147,15 @@ function setup(){
 
 function draw(){
 
+  if(hour() == 0 && minute() == 0 && second() == 01) {
+    setTimeout(function(){
+      location.reload();
+    },3000);
+  }
   mapVal = hour()*3600+minute()*60+second();
   curLength = mapRate * mapVal;  // map val == 현재시간
   var temp=0;
+  var prevIndex = mapIndex;
   for(var i=0; i<pool.length; i++){
     temp += pool[i].len;
     if(temp > curLength) {
@@ -143,8 +163,22 @@ function draw(){
       break;
     }
   }
-  
+
   mouseOver(mouseX, mouseY);
+  if(prevIndex != mapIndex){
+  pool[prevIndex].delta =0;
+  }
+  pool[mapIndex].delta -= deltaTime/20;
+  if(pool[mapIndex].delta <= -(pool[mapIndex].str.length*textsize*0.7)){
+    pool[mapIndex].delta = pool[mapIndex].str.length*textsize*0.7;
+  }
   createTextBox();
+
 }
 
+function mousePressed(){
+}
+
+function showinfo(){
+  about.style('color', 'green');
+}

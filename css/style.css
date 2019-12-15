@@ -1,6 +1,69 @@
-@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans|Nanum+Myeongjo&display=swap');
 
 body{
     font-family: 'Black Han Sans', sans-serif;
     font-size: 18px;
+}
+
+#title{
+    left:0px;
+    top:50%;
+    transform : rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 40px;
+    position:fixed;
+}
+
+#title:hover{
+    text-decoration: underline;
+    color:red;
+}
+
+
+#about{
+    position :fixed;
+    right:40px;
+    top : 50%;
+    display: block;
+    transform : rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 40px;
+    position: fixed;
+}
+
+#about:hover{
+    text-decoration: underline;
+    color:red;
+}
+
+
+#about:active{
+    color: blue;
+}
+
+#info{
+    display: none;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
+
+    width:300px;
+    background-color:red;
+    right:350px;
+    top:50%;
+    position: fixed;
+}
+
+#about:hover + #info{
+    display:block;
 }

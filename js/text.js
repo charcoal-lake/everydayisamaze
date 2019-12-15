@@ -117,7 +117,8 @@ function createTextBox(){
 
 function mouseOver(mouseX, mouseY){
 
-    for(var i=0; i<mapIndex+1; i++){
+    for(var i=0; i<mapIndex; i++){
+
         if(pool[i].reverse == false) {
             if(mouseX > pool[i].posx && mouseX < pool[i].canvas.width+pool[i].posx
                 && mouseY > pool[i].posy && mouseY < pool[i].posy+pool[i].canvas.height){
@@ -125,7 +126,7 @@ function mouseOver(mouseX, mouseY){
                     pool[i].textfill = color(255,255,255);
                     // 리사이즈 이거 쓰면 됨
                     // pool[i].canvas.resizeCanvas(pool[i].canvas.width+10, pool[i].canvas.height);
-                    pool[i].delta -= deltaTime/10;
+                    pool[i].delta -= deltaTime/20;
                     if(pool[i].delta <= -(pool[i].str.length*textsize*0.7)){
                         pool[i].delta = pool[i].str.length*textsize*0.7;
                     }
@@ -141,7 +142,7 @@ function mouseOver(mouseX, mouseY){
                 && mouseY > pool[i].posy && mouseY < pool[i].posy+pool[i].canvas.height){
                     pool[i].bg['r'] = 77; pool[i].bg['g']=69; pool[i].bg['b']=71;
                     pool[i].textfill = color(255,255,255);
-                    pool[i].delta -= deltaTime/10;
+                    pool[i].delta -= deltaTime/20;
                     if(pool[i].delta <= -(pool[i].str.length*textsize*0.7)){
                         pool[i].delta = pool[i].str.length*textsize*0.7;
                     }
@@ -156,7 +157,7 @@ function mouseOver(mouseX, mouseY){
                 && mouseY > pool[i].posy - pool[i].canvas.height + cellsize/2 && mouseY < pool[i].posy+cellsize/2){
                     pool[i].bg['r'] = 77; pool[i].bg['g']=69; pool[i].bg['b']=71;
                     pool[i].textfill = color(255,255,255);
-                    pool[i].delta -= deltaTime/10;
+                    pool[i].delta -= deltaTime/20;
                     if(pool[i].delta <= -(pool[i].str.length*textsize*0.7)){
                         pool[i].delta = pool[i].str.length*textsize*0.7;
                     }
