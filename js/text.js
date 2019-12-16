@@ -160,7 +160,7 @@ function mouseOver(mouseX, mouseY){
                     pool[i].textfill = color(255,255,255);
                     pool[i].delta -= deltaTime/20;
                     if(pool[i].delta <= -(pool[i].str.length*textsize*0.7)){
-                        pool[i].delta = pool[i].canvas.height+1;
+                        pool[i].delta = pool[i].canvas.height;
                     }
                 }
                 else {
