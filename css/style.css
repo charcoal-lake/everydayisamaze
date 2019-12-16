@@ -6,6 +6,7 @@ body{
 }
 
 #title{
+    transform-origin: center;
     left:0px;
     top:50%;
     transform : rotate(90deg);
@@ -58,7 +59,7 @@ body{
     font-size: 15px;
 
     width:300px;
-    right:350px;
+    right:200px;
     top:30%;
     position: fixed;
 }
