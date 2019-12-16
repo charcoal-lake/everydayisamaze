@@ -177,7 +177,7 @@ function draw(){
   }
   pool[mapIndex].delta -= deltaTime/20;
   if(pool[mapIndex].delta <= -(pool[mapIndex].str.length*textsize*0.7)){
-    pool[mapIndex].delta = pool[mapIndex].str.length*textsize*0.7;
+    pool[mapIndex].delta = pool[mapIndex].len*textsize*0.7;
   }
   createTextBox();
 

@@ -128,7 +128,8 @@ function mouseOver(mouseX, mouseY){
                     // pool[i].canvas.resizeCanvas(pool[i].canvas.width+10, pool[i].canvas.height);
                     pool[i].delta -= deltaTime/20;
                     if(pool[i].delta <= -(pool[i].str.length*textsize*0.7)){
-                        pool[i].delta = pool[i].str.length*textsize*0.7;
+                        if(pool[i].rotate == 'H') pool[i].delta = pool[i].canvas.width;
+                        else pool[i].delta = pool[i].canvas.height;
                     }
                 }
                 else {
@@ -144,7 +145,7 @@ function mouseOver(mouseX, mouseY){
                     pool[i].textfill = color(255,255,255);
                     pool[i].delta -= deltaTime/20;
                     if(pool[i].delta <= -(pool[i].str.length*textsize*0.7)){
-                        pool[i].delta = pool[i].str.length*textsize*0.7;
+                        pool[i].delta = pool[i].canvas.width;
                     }
                 }
                 else {
@@ -159,7 +160,7 @@ function mouseOver(mouseX, mouseY){
                     pool[i].textfill = color(255,255,255);
                     pool[i].delta -= deltaTime/20;
                     if(pool[i].delta <= -(pool[i].str.length*textsize*0.7)){
-                        pool[i].delta = pool[i].str.length*textsize*0.7;
+                        pool[i].delta = pool[i].canvas.height+1;
                     }
                 }
                 else {
